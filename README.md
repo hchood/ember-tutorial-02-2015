@@ -126,12 +126,12 @@ To start our app, we need to generate both a rails-api app and an ember app insi
   ```
 
   ```no-highlight
-  cd backend
   bundle install
   rails g rspec:install
   git add -A
   git commit -m "Add active_model_serializers, debugging and testing gems."
   ```
+  > NOTE: Make sure you're inside of your `backend/` directory when running `bundle`, `rails server`, and other rails commands.
 
 Test out that your app is running by running the rails server and the ember server in separate terminal shells.
 
