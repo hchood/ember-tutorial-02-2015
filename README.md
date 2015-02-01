@@ -52,6 +52,9 @@ brew update
 # which we will use to install other tools we need)
 brew install node
 
+# install watchman
+brew install watchman
+
 # install bower
 npm install -g bower
 
