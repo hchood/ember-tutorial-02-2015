@@ -9,6 +9,7 @@ Tools we'll be using:
 - ember-cli ([website](http://www.ember-cli.com/), [github](https://github.com/ember-cli/ember-cli))
 - [rails-api](https://github.com/rails-api/rails-api)
 
+- [ActiveModel serializers](https://github.com/rails-api/active_model_serializers)
 
 ## The plan
 
