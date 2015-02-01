@@ -106,7 +106,7 @@ To start our app, we need to generate both a rails-api app and an ember app insi
  rake db:create
  ```
 
-* Add `active_model_serializers` gem and testing and debugging gems and bundle. Commit your changes. **Make sure to specify version 0.8.3 for active_model_serializers if you're using Rails 4.2! (which you should be).**
+* Add `active_model_serializers` gem and testing and debugging gems, run RSpec generator, and bundle. Commit your changes. **Make sure to specify version 0.8.3 for active_model_serializers if you're using Rails 4.2! (which you should be).**
 
   ```ruby
   # Gemfile
@@ -128,6 +128,7 @@ To start our app, we need to generate both a rails-api app and an ember app insi
   ```no-highlight
   cd backend
   bundle install
+  rails g rspec:install
   git add -A
   git commit -m "Add active_model_serializers, debugging and testing gems."
   ```
