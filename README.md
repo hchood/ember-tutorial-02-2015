@@ -8,7 +8,6 @@ Tools we'll be using:
 
 - ember-cli ([website](http://www.ember-cli.com/), [github](https://github.com/ember-cli/ember-cli))
 - [rails-api](https://github.com/rails-api/rails-api)
-
 - [ActiveModel serializers](https://github.com/rails-api/active_model_serializers)
 
 ## The plan
@@ -40,9 +39,7 @@ Tools we'll be using:
 
 ## Day 1
 
-### Part I. Getting setup
-
-#### A. Install stuff!
+### Part I. Install stuff!
 
 ```no-highlight
 # make sure Homebrew is up to date
@@ -66,22 +63,17 @@ npm install -g ember-cli
 gem install rails-api
 ```
 
-#### B. Generate the app
+### Part II. Generate the Rails app & build projects API
 
-To start our app, we need to generate both a rails-api app and an ember app inside our app's top-level directory.
+#### A. Generate the Rails app
+
+To start our app, we need to generate both a rails-api app and an ember app inside our app's top-level directory.  Since we'll work on the Rails side first, let's start out by adding a new rails-api app:
 
 * Create the top-level app directory:
 
   ```no-highlight
   mkdir project-planner
   cd project-planner
-  ```
-
-* Create the ember app inside your app directory.  Rename it `frontend/`.
-
-  ```no-highlight
-  ember new project-planner --skip-git
-  mv project-planner frontend
   ```
 
 * Create the rails-api app using Postgres. Rename it `backend/`.
@@ -133,13 +125,62 @@ To start our app, we need to generate both a rails-api app and an ember app insi
   ```
   > NOTE: Make sure you're inside of your `backend/` directory when running `bundle`, `rails server`, and other rails commands.
 
-Test out that your app is running by running the rails server and the ember server in separate terminal shells.
+Start your `rails server` and navigate to [localhost:3000](http://localhost:3000). You should see the standard Rails welcome page.
 
-Start the rails server in one shell:
+#### B. Building our Rails API for projects index & show pages
 
-```no-highlight
-cd backend
-rails server
+[Eric's sweet slides. Build index & show actions for projects.]
+
+### Part III. Overview of Ember
+
+[More Eric keynoting.]
+
+### Part IV. Generate the Ember app & build projects index & show pages
+
+Now that we have a Rails API to serve up projects information, we can start building out our frontend.
+
+#### A. Generate the Ember app
+
+Make sure you're in your top-level app directory.
+
+  * Create the Ember app inside your app directory.  Rename it `frontend/`.
+
+    ```no-highlight
+    ember new project-planner --skip-git
+    mv project-planner frontend
+    ```
+
+  * Test out that your app is running by running the rails server and the ember server in separate terminal shells.
+
+    Start the Rails server in one shell:
+
+  ```no-highlight
+  cd backend
+  rails server
+  ```
+
+  Start the Ember server in the second shell:
+
+  ```no-highlight
+  cd frontend
+  ember server --proxy http://localhost:3000
+  ```
+
+  Your Ember app should now be running on port 4200, and will send any requests for data to our Rails server.  Navigating to [localhost:4200](http://localhost:4200), you should see the message "Welcome to Ember.js".
+
+
+Before we move on, let's tell our Ember app that it'll be using the ActiveModel adapter [**ERIC TALK ABOUT THIS**], and that all of its requests to our Rails app should be namespaced to `api/v1`.  This means that navigating to `localhost:4200/projects` will make a GET request to `localhost:3000/api/v1/projects` instead of `localhost:3000/projects`, for example.
+
+  * Create a file called `frontend/app/adapters/application.js` and add the following:
+
+  ```js
+  import DS from 'ember-data';
+
+  export default DS.ActiveModelAdapter.extend({
+    namespace: 'api/v1'
+  });
+  ```
+  > NOTE: You'll need to create the `frontend/app/adapters/` directory.
 ```
 
 If you navigate to [localhost:3000](http://localhost:3000), you should see the standard Rails welcome page.
