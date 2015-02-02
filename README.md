@@ -1,6 +1,6 @@
 ## Overview
 
-In this and the next several sessions, we'll build a project management app with an Ember frontend and Rails API backend.  
+In this and the next several sessions, we'll build a project management app with an Ember frontend and Rails API backend.
 
 ![ER diagram](https://s3-us-west-2.amazonaws.com/2015-02-ember-tutorial/ember-tutorial-erd.png)
 
@@ -32,7 +32,7 @@ Tools we'll be using:
   - Marking a task complete
 
 * Day 4:
-  - Testing?  
+  - Testing?
 
   [Maybe we give them acceptance and controller tests for the projects CRUD actions.]
 
@@ -120,6 +120,18 @@ To start our app, we need to generate both a rails-api app and an ember app insi
   ```no-highlight
   bundle install
   rails g rspec:install
+  ```
+
+* Add `shoulda-matchers` to your `spec/rails_helpler.rb` file.
+
+  ```ruby
+  require 'rspec/rails'
+  require 'shoulda/matchers'
+  ```
+
+* Commit your changes.
+
+  ```no-highlight
   git add -A
   git commit -m "Add active_model_serializers, debugging and testing gems."
   ```
@@ -246,7 +258,7 @@ installing
   create tests/unit/models/project-test.js
 ```
 
-This generated a basic project model without any attributes. We need to set the right attributes on our project model so that we can access them in our template later.  
+This generated a basic project model without any attributes. We need to set the right attributes on our project model so that we can access them in our template later.
 
 ```js
 // frontend/app/models/project.js
