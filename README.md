@@ -122,7 +122,7 @@ To start our app, we need to generate both a rails-api app and an ember app insi
   rails g rspec:install
   ```
 
-* Add `shoulda-matchers` to your `spec/rails_helpler.rb` file.
+* Add `shoulda-matchers` to your `spec/rails_helper.rb` file.
 
   ```ruby
   require 'rspec/rails'
